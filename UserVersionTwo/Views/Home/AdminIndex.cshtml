@@ -1,0 +1,44 @@
+﻿@model List<UserListViewModel>
+
+<div class="card mt-3">
+    <div class="card-body">
+        <span>Hoşgeldin <span class="badge text-bg-info">@ViewBag.UserName</span> || Yetki Derecelendirmeniz : <span class="badge text-bg-danger">@ViewBag.Role</span> </span><br />
+        <hr />
+        <span class="badge text-bg-warning">YÖNETİCİ PANELİ - Giriş Bilginizi ve Yetki Derecelendirmenizi Sayfa'ya Giriş yaptıktan sonra 1 Kez Görebilirsiniz</span>
+        <hr />
+        <a asp-controller="Home" asp-action="Create" class="btn btn-primary">Yeni Kullanıcı Ekle</a>
+        <a asp-controller="Task" asp-action="Index" class="btn btn-info">Görev Listesi</a>
+    </div>
+</div>
+
+<hr />
+<table class="table table-bordered table-hover">
+    <thead>
+        <th style="width:10px">Id</th>
+        <th>Name</th>
+        <th>LastName</th>
+        <th>Email</th>
+        <th>Birthday</th>
+        <th>Active</th>
+        <th style="width:200px">İşlemler</th>
+    </thead>
+    <tbody>
+        @foreach(var user in Model)
+        {
+            <tr>
+                <td>@user.Id</td>
+                <td>@user.Name</td>
+                <td>@user.LastName</td>
+                <td>@user.Email</td>
+                <td>@user.Birthday.ToString("yyyy-MM-dd")</td>
+                <td><span class="badge text-bg-@(user.IsActive == true ? "success" : "danger")">@user.IsActive</span></td>
+                <td>
+                    <a asp-controller="Home" asp-action="Details" asp-route-id="@user.Id" class="btn btn-sm btn-secondary">Detaylar</a>
+                    <a asp-controller="Home" asp-action="Edit" asp-route-id="@user.Id" class="btn btn-sm btn-warning">Düzenle</a>
+                    <a asp-controller="Home" asp-action="Delete" asp-route-id="@user.Id" class="btn btn-sm btn-danger">Sil</a>
+                </td>
+            </tr>
+        }
+
+    </tbody>
+</table> 

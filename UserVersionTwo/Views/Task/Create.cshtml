@@ -1,0 +1,26 @@
+﻿@model TaskAddViewModel
+
+<h3>Yeni Görev Ekleme</h3>
+
+<form method="post" asp-controller="Task" asp-action="Create">
+    <div>
+        <label for="">Görev Adı</label>
+        <input asp-for="TaskName" type="text" class="form-control">
+        
+    </div>
+    <div>
+        <label for="">Görev Detay</label>
+        <textarea class="form-control" rows="4" asp-for="TaskDescription"></textarea>
+        
+    </div>
+    <div>
+        <label for="">İlgili Kullanıcı</label>
+        <select asp-for="UserId" class="form-control" asp-items="ViewBag.Users">
+            <option value="">@ViewBag.UserName</option>
+        </select>
+    </div>
+
+ 
+    <button asp-controller="Task" asp-action="Create" type="submit" class="btn btn-success mt-2">Kaydet</button>
+    <a asp-controller="Task" asp-action="Index" class="btn btn-info">Anasayfa Dön</a>
+</form>

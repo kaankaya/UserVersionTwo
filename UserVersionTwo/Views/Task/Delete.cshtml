@@ -1,0 +1,19 @@
+﻿@model TaskEntity
+
+<h2 class="h2 text-center mb-4">@Model.TaskName Görev Siliniyor</h2>
+<div class="card">
+    <div class="card-header text-center">
+        <p>Bu Görevi Silmek İstiyormusunuz?</p>
+    </div>
+    <div class="card-body">
+        Bu işlem Geri Alınamaz
+    </div>
+</div>
+<hr />
+<form asp-controller="Task" asp-action="DeleteConfirmed" method="post">
+    
+    <input type="hidden" name="id" value="@Model.TaskId" />
+    <button type="submit" class="btn btn-warning">Delete</button>
+    <a asp-controller="Task" asp-action="Index" class="btn btn-info">İptal Et</a>
+</form>
+

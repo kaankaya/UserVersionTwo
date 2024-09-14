@@ -1,0 +1,31 @@
+﻿@model TaskEditViewModel
+
+<h3>Yeni Görev Ekleme</h3>
+
+<form method="post" asp-controller="Task" asp-action="Edit">
+    <input type="hidden" asp-for="TaskId" />
+    <div>
+        <label for="">Görev Adı</label>
+        <input asp-for="TaskName" type="text" class="form-control">
+
+    </div>
+    <div>
+        <label for="">Görev Detay</label>
+        <textarea class="form-control" rows="4" asp-for="TaskDescription"></textarea>
+
+    </div>
+    <div class="form-check mt-2">
+        <input asp-for="TaskStatus" class="form-check-input" type="checkbox" />
+        <label class="form-check-label">Tamamlandımı?</label>
+    </div>
+    <div>
+        <label for="">İlgili Kullanıcı</label>
+        <select asp-for="UserId" class="form-control" asp-items="ViewBag.Users">
+            <option value="">Kullanıcı Seç</option>
+        </select>
+    </div>
+
+
+    <button asp-controller="Task" asp-action="Edit" type="submit" class="btn btn-success mt-2">Düzenle</button>
+    <a asp-controller="Task" asp-action="Index" class="btn btn-info">Anasayfa</a>
+</form>

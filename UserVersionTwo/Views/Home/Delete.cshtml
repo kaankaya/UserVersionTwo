@@ -1,0 +1,17 @@
+﻿@model UserEntity
+
+<h2 class="h2 text-center mb-4">@Model.Name Adlı Kullanıcı Silinicek !!</h2>
+<div class="card">
+    <div class="card-header text-center">
+        <p>Bu Kullanıcıyı Silmek İstediğinize Eminmisiniz?</p>
+    </div>
+    <div class="card-body">
+        Bu işlem geriye Alınamaz
+    </div>
+</div>
+<hr />
+<form asp-controller="Home" asp-action="DeleteConfirmed" method="post">
+    <input type="hidden" asp-for="@Model.Id" />
+    <button type="submit" class="btn btn-warning">Sil</button>
+    <a asp-controller="Home" asp-action="AdminIndex" class="btn btn-info">Vazgeç</a>
+</form>

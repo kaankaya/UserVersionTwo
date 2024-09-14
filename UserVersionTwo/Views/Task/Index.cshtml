@@ -1,0 +1,41 @@
+﻿@model List<TaskListViewModel>
+
+
+<div class="card mt-3">
+    <div class="card-body">
+        <hr />
+        <a asp-controller="Task" asp-action="Create" class="btn btn-primary">Yeni Görev Ekle</a>
+        <a asp-controller="Home" asp-action="AdminIndex" class="btn btn-info">Kullanıcı Listesi</a>
+    </div>
+</div>
+
+<hr />
+
+<table class="table table-bordered table-hover">
+    <thead>
+    <th style="width:10px">Id</th>
+    <th>Görev Adı</th>
+    <th>Görev Açıklaması</th>
+    <th>Görev Durumu</th>
+    <th>Atanan Kullanıcı</th>
+    <th style="width:200px">İşlemler</th>
+    </thead>
+    <tbody>
+        @foreach (var task in Model)
+        {
+            <tr>
+                <td>@task.TaskId</td>
+                <td>@task.TaskName</td>
+                <td>@task.TaskDescription</td>
+                <td><span class="badge text-bg-@(task.TaskStatus == true ? "success" : "danger")">@task.TaskStatus</span></td>
+                <td>@task.UserName</td>
+                <td>
+                    <a asp-controller="Task" asp-action="Details" asp-route-id="@task.TaskId" class="btn btn-sm btn-secondary">Detaylar</a>
+                    <a asp-controller="Task" asp-action="Edit" asp-route-id="@task.TaskId" class="btn btn-sm btn-warning">Düzenle</a>
+                    <a asp-controller="Task" asp-action="Delete" asp-route-id="@task.TaskId" class="btn btn-sm btn-danger">Sil</a>
+                </td>
+            </tr>
+        }
+
+    </tbody>
+</table> 

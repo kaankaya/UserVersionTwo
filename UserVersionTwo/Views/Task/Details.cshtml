@@ -1,0 +1,25 @@
+﻿@model TaskEntity
+
+<h2 class="h2 text-center">@Model.TaskName Görevi Bilgileri</h2>
+<hr />
+<table class="table table-bordered table-hover">
+    <tr class="border-3">
+        <td style="width:20px">Görev Adı:</td>
+        <td>@Model.TaskName</td>
+    </tr>
+    <tr class="border-3">
+        <td style="width:25px">Görev Detayı:</td>
+        <td>@Model.TaskDescription</td>
+    </tr>
+    <tr class="border-3">
+        <td style="width:25px">İlgili Kullanıcı:</td>
+        <td>@ViewBag.UserName</td>
+    </tr>
+    <tr class="border-3">
+        <td style="width:25px">Görev Durumu:</td>
+        <td><span class="badge text-bg-@(Model.TaskStatus == true ? "success" : "danger")">@(Model.TaskStatus == true ? "Tamamlandı" : "Tamamlanmadı")</span></td>
+    </tr
+  
+</table>
+<hr />
+<a asp-controller="Task" asp-action="Index" class="btn btn-info">Anasayfaya Dön</a>

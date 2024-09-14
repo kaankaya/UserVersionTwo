@@ -1,0 +1,44 @@
+﻿@model UserEntity
+
+<h2 class="h2 text-center">@Model.Name Kullanıcı Bilgileri</h2>
+<hr />
+<table class="table table-bordered table-hover">
+    <tr class="border-3">
+        <td style="width:20px">Adı:</td>
+        <td>@Model.Name</td>
+    </tr>
+    <tr class="border-3">
+        <td style="width:25px">Soyadı:</td>
+        <td>@Model.LastName</td>
+    </tr>
+    <tr class="border-3">
+        <td style="width:25px">Doğum Tarihi:</td>
+        <td>@Model.Birthday.ToString("yyyy-MM-dd")</td>
+    </tr>
+    <tr class="border-3">
+        <td style="width:25px">Email:</td>
+        <td>@Model.Email</td>
+    </tr>
+    <tr class="border-3">
+        <td style="width:25px">Kullanıcı Adı:</td>
+        <td>@Model.UserName</td>
+    </tr>
+      <tr class="border-3">
+        <td style="width:25px">Kullanıcı Şifresi:</td>
+        <td>@Model.Password</td>
+    </tr>
+     <tr class="border-3">
+        <td style="width:25px">Kullanıcı Rolü:</td>
+        <td>@Model.Role</td>
+    </tr>
+    <tr class="border-3">
+        <td style="width:25px">Aktif Mi?:</td>
+        <td><span class="badge text-bg-@(Model.IsActive == true ? "success" : "danger")">@(Model.IsActive == true ? "Active" : "InActive")</span></td>
+    </tr
+     <tr class="border-3">
+        <td style="width:25px">Oluşturulma Tarihi:</td>
+        <td>@Model.CreatedAt.ToString("yyyy-MM-dd | hh:mm:ss")</td>
+    </tr>
+</table>
+<hr />
+<a asp-controller="Home" asp-action="AdminIndex" class="btn btn-info">Back Home</a>
